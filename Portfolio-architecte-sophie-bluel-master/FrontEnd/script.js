@@ -9,6 +9,8 @@ async function fetchWorks() {
 async function displayWorks(){
     const works = await fetchWorks();
 
+    gallery.innerHTML = '';
+
     for(const work of works){
         const figure = document.createElement("figure");
         const img = document.createElement("img");
@@ -31,6 +33,7 @@ async function displayWorks(){
 
 document.addEventListener('DOMContentLoaded', async () => {
     await displayWorks();
+    await displayCategory();
 })
 
 
@@ -42,10 +45,34 @@ const divFiltre = document.createElement("div");
 filtresProjets.insertAdjacentElement("afterend", divFiltre);
 
 // Création des boutons de filtres 
+// Ici le bouton tous qui n'est pas récupérer dynamiquement 
 
 const boutonTous = document.createElement("button");
 boutonTous.textContent = "Tous";
-boutonTous.addEventListener("click", function(){
-
+boutonTous.addEventListener("click", async function (){
+    await displayWorks();
 });
 divFiltre.appendChild(boutonTous);
+
+
+// récupération dynamique des catégories 
+
+async function fetchCategory() {
+    const response = await fetch('http://localhost:5678/api/categories');
+    return await response.json();
+}
+
+// Création des boutons de catégories 
+
+async function displayCategory (){
+    const categories = await fetchCategory();
+    
+    for(const category of categories){
+        const button = document.createElement("button");
+        button.textContent = category.name;
+        button.dataset.categoryId = category.id;
+
+
+        divFiltre.appendChild(button);
+    }
+}
