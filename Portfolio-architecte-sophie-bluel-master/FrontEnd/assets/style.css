@@ -186,3 +186,30 @@ footer nav ul {
 	margin: 2em
 }
 
+
+/* Ajout style des bouttons de filtrage  */
+
+.divdesfiltres {
+	display: flex;
+	flex-direction:row;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+button {
+	color: #1D6154;
+	background-color: white;
+	border-radius: 60px;
+	border-color: #1D6154;
+	border: 2px solid #1D6154;
+	margin: 5px;
+	padding: 10px 40px;
+	font-size: 16px;
+	font-weight: 700;
+	font-family: 'Syne';
+}
+
+button:hover {
+	color: white;
+	background-color: #1D6154;
+}

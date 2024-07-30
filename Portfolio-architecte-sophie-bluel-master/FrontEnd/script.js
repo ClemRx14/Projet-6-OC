@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 const filtresProjets = document.getElementById("filtresProjets");
 const divFiltre = document.createElement("div");
 filtresProjets.insertAdjacentElement("afterend", divFiltre);
+divFiltre.className = 'divdesfiltres';
 
 // Création des boutons de filtres 
 // Ici le bouton tous qui n'est pas récupérer dynamiquement 
@@ -72,7 +73,20 @@ async function displayCategory (){
         button.textContent = category.name;
         button.dataset.categoryId = category.id;
 
+        button.addEventListener("click", async function(){
+            await filtrerCategory(categoryId);
+        })
 
         divFiltre.appendChild(button);
     }
 }
+
+
+// Filtrage des Projets pour affichage en catégorie
+
+async function filtrerCategory(categoryId){
+    const works = await fetchWorks();
+    gallery.innerHTML = '';
+
+}
+
