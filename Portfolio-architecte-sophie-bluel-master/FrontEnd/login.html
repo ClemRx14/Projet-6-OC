@@ -15,33 +15,42 @@
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li id="login">login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+    <nav>
+        <ul class="navigationLiens">
+            <li id="retourProjets"><a>projets</a></li>
+            <li><a>contact</a></li>
+            <li id="login"><a>login</a></li>
+            <li>
+                <a href="https://www.instagram.com" target="_blank">
+                <img src="./assets/icons/instagram.png" alt="Instagram">
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>
 <main>
-<h2 class="titreLog">Log In</h2>
-<form class="inputsConnexion">
+    <section>
+        <h2 class="titreLog">Log In</h2>
+        <form class="inputsConnexion">
 
-    <label for="EMAIL">E-mail </label>
-    <input name="Email" id="EMAIL" type="email">
+             <label for="EMAIL">E-mail </label>
+             <input name="Email" id="EMAIL" type="email">
 
-    <label for="MDP">Mot de passe </label>
-    <input name="MotDePasse" id="MDP" type="password">
+             <label for="MDP">Mot de passe </label>
+             <input name="MotDePasse" id="MDP" type="password">
 
-</form>
+        </form>
+        <form class="inputBoutonLogin">
+             <input class="boutonLogin" type="button" value="Se connecter"/>
+        </form>
+    </section>
 </main>
 
 <footer>
 	<nav>
 		<ul>
-			<li>Mentions Légales</li>
+			<li><a>Mentions Légales</a></li>
 		</ul>
 	</nav>
 </footer>

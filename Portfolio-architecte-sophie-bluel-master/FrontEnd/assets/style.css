@@ -196,7 +196,7 @@ footer nav ul {
 	margin-bottom: 30px;
 }
 
-button {
+.boutonLogin, button {
 	color: #1D6154;
 	background-color: white;
 	border-radius: 60px;
@@ -209,7 +209,8 @@ button {
 	font-family: 'Syne';
 }
 
-button:hover {
+
+.boutonLogin:hover, button:hover {
 	color: white;
 	background-color: #1D6154;
 }
@@ -233,7 +234,7 @@ button:hover {
 
 .inputsConnexion label {
 	display: flex;
-	margin-bottom: 2px;
+	margin-bottom: 10px;
 	width: 26%;
 	font-size: 14px;
 	font-family: 'Work Sans';
@@ -247,4 +248,22 @@ button:hover {
 	margin-bottom: 25px;
 	width: 26%;
 	height: 35px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	text-decoration: none;
+	border: transparent;
 }
+
+a {
+	cursor: pointer;
+}
+
+.inputBoutonLogin {
+	width: 100%;
+	margin-top: 0px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+
+
