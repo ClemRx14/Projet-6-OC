@@ -28,7 +28,7 @@ async function displayWorks(){
 }
 
 
-// Ajout de la fonction displayWorks après le chargement de la page HTML
+// Ajout des fonctions Display après le chargement de la page HTML
 // Pour l'actualisation de tout les projets quand on ajoutera ou supprimera d'autres projets.
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -63,7 +63,7 @@ async function fetchCategory() {
     return await response.json();
 }
 
-// Création des boutons de catégories 
+// Création des boutons de catégories
 
 async function displayCategory (){
     const categories = await fetchCategory();
@@ -74,7 +74,7 @@ async function displayCategory (){
         button.dataset.categoryId = category.id;
 
         button.addEventListener("click", async function(){
-            await filtrerCategory(categoryId);
+            await filtrerCategory(category.id);
         })
 
         divFiltre.appendChild(button);
@@ -86,7 +86,23 @@ async function displayCategory (){
 
 async function filtrerCategory(categoryId){
     const works = await fetchWorks();
+    const gallery = document.getElementById("gallery");
     gallery.innerHTML = '';
 
+    for (const work of works){
+        if (work.categoryId === categoryId){
+            const figure = document.createElement("figure");
+            const img = document.createElement("img");
+            const figCaption = document.createElement("figcaption");
+
+            img.src = work.imageUrl;
+            img.alt = work.title;
+            figCaption.innerText = work.title;
+
+            gallery.appendChild(figure);
+            figure.appendChild(img);
+            figure.appendChild(figCaption);
+        }
+    }
 }
 
