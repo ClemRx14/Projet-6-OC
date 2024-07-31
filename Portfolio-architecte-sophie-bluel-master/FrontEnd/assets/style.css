@@ -213,3 +213,38 @@ button:hover {
 	color: white;
 	background-color: #1D6154;
 }
+
+/* Page de Connexion */
+
+.titreLog {
+	width: auto;
+	display: flex;
+	justify-content: center;
+	margin-top: 100px;
+}
+
+.inputsConnexion {
+	margin-top: 30px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.inputsConnexion label {
+	display: flex;
+	margin-bottom: 2px;
+	width: 26%;
+	font-size: 14px;
+	font-family: 'Work Sans';
+	/* Initiative weight 800 car + concordant à la maquette */
+	font-weight: 800;
+	color: #3D3D3D;
+	text-align: left;
+}
+
+.inputsConnexion input {
+	margin-bottom: 25px;
+	width: 26%;
+	height: 35px;
+}
