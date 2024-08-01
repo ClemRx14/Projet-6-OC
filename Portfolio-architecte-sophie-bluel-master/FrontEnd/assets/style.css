@@ -207,6 +207,7 @@ footer nav ul {
 	font-size: 16px;
 	font-weight: 700;
 	font-family: 'Syne';
+	align-items: center;
 }
 
 
@@ -257,19 +258,15 @@ a {
 	cursor: pointer;
 }
 
-.inputBoutonLogin {
-	width: 100%;
-	margin-top: 0px;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-}
-
-.inputBoutonLogin a {
+.mdpOublie {
 	margin-top: 20px;
 	border-bottom: solid 1px;
 	font-weight: 500;
 }
 
+#boutonLogin {
+	height: 36px;
+	width: auto;
+}
 
 
