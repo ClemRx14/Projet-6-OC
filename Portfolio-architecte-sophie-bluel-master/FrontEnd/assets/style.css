@@ -265,5 +265,11 @@ a {
 	flex-direction: column;
 }
 
+.inputBoutonLogin a {
+	margin-top: 20px;
+	border-bottom: solid 1px;
+	font-weight: 500;
+}
+
 
 
