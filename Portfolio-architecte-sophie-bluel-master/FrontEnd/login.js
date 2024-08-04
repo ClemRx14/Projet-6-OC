@@ -15,3 +15,38 @@ const retourIndex = document.getElementById('retourProjets');
 retourIndex.addEventListener("click", function() {
     window.location.href = 'index.html';
 });
+
+
+
+// Envoie du formulaire de connexion à l'API
+// 
+
+async function fetchLogs() {
+    const response = await fetch('http://localhost:5678/api/users/login');
+    return await response.json();
+}
+
+function envoieLogs() {
+    const formulaireLogs = document.querySelector(".inputsConnexion");
+    const boutonConnecter = document.getElementById("boutonLogin");
+
+    boutonConnecter.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const logs = {
+            email: formulaireLogs.querySelector("[name=email]").value,
+            password: formulaireLogs.querySelector("[name=password]").value,
+        };
+    console.log("Valeurs envoyées : ", logs);
+    const chargeUtile = JSON.stringify(logs);
+
+    fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: chargeUtile
+
+    });
+
+    });
+
+}

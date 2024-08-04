@@ -267,6 +267,7 @@ a {
 #boutonLogin {
 	height: 36px;
 	width: auto;
+	cursor: pointer;
 }
 
 
