@@ -19,7 +19,13 @@ retourIndex.addEventListener("click", function() {
 
 
 // Envoie du formulaire de connexion à l'API
-// 
+
+// Envoie du formulaire après le chargement complet du DOM
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await envoieLogs();
+
+})
 
 async function fetchLogs() {
     const response = await fetch('http://localhost:5678/api/users/login');
@@ -30,7 +36,7 @@ function envoieLogs() {
     const formulaireLogs = document.querySelector(".inputsConnexion");
     const boutonConnecter = document.getElementById("boutonLogin");
 
-    boutonConnecter.addEventListener("click", function (event) {
+    boutonConnecter.addEventListener("click", async function (event) {
         event.preventDefault();
 
         const logs = {
@@ -38,14 +44,18 @@ function envoieLogs() {
             password: formulaireLogs.querySelector("[name=password]").value,
         };
     console.log("Valeurs envoyées : ", logs);
-    const chargeUtile = JSON.stringify(logs);
 
-    fetch("http://localhost:5678/api/users/login", {
+    const chargeUtile = JSON.stringify(logs);
+    
+
+    const response = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: chargeUtile
 
     });
+    const reponseApi = await response.json();
+    console.log("Réponse de l'API : ", reponseApi);
 
     });
 
