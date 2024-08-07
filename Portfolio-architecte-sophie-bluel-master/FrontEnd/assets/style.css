@@ -270,4 +270,21 @@ a {
 	cursor: pointer;
 }
 
+#errorLogin {
+	color: red;
+	font-weight: 900;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	bottom: 130px;
+}
+
+#errorEmail {
+	color: red;
+	font-weight: 900;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	bottom: 220px;
+}
 

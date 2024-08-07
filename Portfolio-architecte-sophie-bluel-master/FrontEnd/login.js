@@ -43,20 +43,46 @@ function envoieLogs() {
             email: formulaireLogs.querySelector("[name=email]").value,
             password: formulaireLogs.querySelector("[name=password]").value,
         };
-    console.log("Valeurs envoyées : ", logs);
 
-    const chargeUtile = JSON.stringify(logs);
-    
+        // *** Verification du format de l'email
 
-    const response = await fetch("http://localhost:5678/api/users/login", {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const email = formulaireLogs.querySelector("[name=email]").value;
+        const errorEmail = document.getElementById("errorEmail");
+
+        if (!emailRegex.test(email)){
+            errorEmail.innerText = "Veuillez entrer une adresse email valide.";
+            event.preventDefault();
+            return;
+        } else {
+            errorEmail.innerText = "";
+        }
+
+
+     console.log("Valeurs envoyées : ", logs);
+
+     const chargeUtile = JSON.stringify(logs);
+
+
+     const response = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: chargeUtile
-
-    });
-    const reponseApi = await response.json();
-    console.log("Réponse de l'API : ", reponseApi);
-
+    
     });
 
+    const isResponseOk = response.ok;
+    const errorLogin = document.getElementById("errorLogin");
+    if(isResponseOk){
+        const reponseApi = await response.json();
+        const token = reponseApi.token
+        localStorage.setItem("token", token);
+        window.location.href = 'index.html';
+    }else{
+        errorLogin.innerText= "Login ou mot de passe incorrect";
+    }
+    });
 }
+
+
+
