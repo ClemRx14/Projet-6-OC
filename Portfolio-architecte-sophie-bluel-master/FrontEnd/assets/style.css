@@ -254,8 +254,13 @@ footer nav ul {
 	border: transparent;
 }
 
-a {
+a, #login {
 	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+a:hover, #login:hover {
+	color: brown;
 }
 
 .mdpOublie {

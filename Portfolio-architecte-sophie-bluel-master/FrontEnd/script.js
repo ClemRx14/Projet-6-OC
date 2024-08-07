@@ -106,5 +106,31 @@ async function filtrerCategory(categoryId){
     }
 }
 
+// *** Verification de la présence du Token dans le LocalStorage de l'utilisateur
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const token = localStorage.getItem('token');
+
+    if (token){
+        divFiltre.remove();
+        const logout = document.getElementById("login");
+        logout.innerHTML = 'logout';
+        logout.addEventListener("click", () => {
+            localStorage.removeItem('token');
+        
+        });
+    }
+    else {
+
+    }
+
+    console.log(token);
+   
+});
+
+
+
 
 
