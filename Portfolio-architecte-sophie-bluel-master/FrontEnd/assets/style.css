@@ -293,3 +293,30 @@ a:hover, #login:hover {
 	bottom: 220px;
 }
 
+
+/* Modale ********/
+
+
+
+.boutonLogoAdd {
+	display: flex;
+	width: 10%;
+	position: absolute;
+	right: 320px;
+	top: 9px;
+}
+
+#modifierProjets {
+	padding-left: 10px;
+	color: black;
+	font-weight: 500;
+}
+#portfolio {
+	position: relative;
+}
+
+
+
+
+
+

@@ -107,6 +107,7 @@ async function filtrerCategory(categoryId){
 }
 
 // *** Verification de la présence du Token dans le LocalStorage de l'utilisateur
+// et modification de la page index selon la présence du token ou non
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -119,11 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
         logout.innerHTML = 'logout';
         logout.addEventListener("click", () => {
             localStorage.removeItem('token');
-        
+            location.reload();
         });
     }
     else {
-
+        const btnModifier = document.querySelector(".boutonLogoAdd");
+        btnModifier.style.display = 'none';
     }
 
     console.log(token);
