@@ -1,6 +1,5 @@
 // Récupération dynamique des works  
 
-
 async function fetchWorks() {
     const response = await fetch('http://localhost:5678/api/works');
     return await response.json();
@@ -27,7 +26,6 @@ async function displayWorks(){
     }
 }
 
-
 // Ajout des fonctions Display après le chargement de la page HTML
 // Pour l'actualisation de tout les projets quand on ajoutera ou supprimera d'autres projets.
 
@@ -36,9 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await displayCategory();
 })
 
-
 // **** Ajout de la partie pour filtre les projets ******* //
-
 
 const filtresProjets = document.getElementById("filtresProjets");
 const divFiltre = document.createElement("div");
@@ -54,7 +50,6 @@ boutonTous.addEventListener("click", async function (){
     await displayWorks();
 });
 divFiltre.appendChild(boutonTous);
-
 
 // récupération dynamique des catégories 
 
@@ -80,7 +75,6 @@ async function displayCategory (){
         divFiltre.appendChild(button);
     }
 }
-
 
 // Filtrage des Projets pour affichage en catégorie
 
@@ -109,7 +103,6 @@ async function filtrerCategory(categoryId){
 // *** Verification de la présence du Token dans le LocalStorage de l'utilisateur
 // et modification de la page index selon la présence du token ou non
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
     const token = localStorage.getItem('token');
@@ -132,6 +125,27 @@ document.addEventListener('DOMContentLoaded', () => {
    
 });
 
+
+// ***** Gestion de la modale *****//
+
+const btnModifier = document.querySelector(".boutonLogoAdd");
+const displayModale = document.getElementById("modale");
+btnModifier.addEventListener("click", () => {
+    displayModale.style.display = 'flex';
+});
+
+const fermerModale = document.querySelector(".fermetureModale");
+fermerModale.addEventListener("click", () => {
+    displayModale.style.display = 'none';
+});
+
+// Fermer la modale si on clique sur l'arrière plan de la modale **
+
+window.onclick = function(event) {
+    if (event.target === displayModale) {
+      displayModale.style.display = "none";
+    }
+  }
 
 
 
