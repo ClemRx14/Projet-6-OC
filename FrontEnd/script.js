@@ -130,8 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const btnModifier = document.querySelector(".boutonLogoAdd");
 const displayModale = document.getElementById("modale");
-btnModifier.addEventListener("click", () => {
+btnModifier.addEventListener("click", async () => {
     displayModale.style.display = 'flex';
+    await displayMinia();
 });
 
 const fermerModale = document.querySelector(".fermetureModale");
@@ -147,6 +148,19 @@ window.onclick = function(event) {
     }
   }
 
+// Affichage des projets en miniatures 
+
+async function displayMinia() {
+    const works = await fetchWorks();
+    let miniaProjets = document.querySelector(".projetsMinia");
+    miniaProjets.innerHTML = '';
+
+    for (const work of works){
+        const img = document.createElement("img");
+        img.src = work.imageUrl;
+        miniaProjets.appendChild(img);
+    }
+}
 
 
 
