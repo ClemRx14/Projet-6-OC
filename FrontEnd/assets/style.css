@@ -259,7 +259,7 @@ a, #login {
 	text-decoration: none;
 	color: black;
 }
-a:hover, #login:hover {
+a:hover, #login:hover, #modifierProjets:hover {
 	color: brown;
 }
 
