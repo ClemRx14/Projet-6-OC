@@ -154,11 +154,29 @@ async function displayMinia() {
     const works = await fetchWorks();
     let miniaProjets = document.querySelector(".projetsMinia");
     miniaProjets.innerHTML = '';
+    console.log(works);
 
     for (const work of works){
         const img = document.createElement("img");
         img.src = work.imageUrl;
-        miniaProjets.appendChild(img);
+        
+        const containerImage = document.createElement("div");
+        containerImage.className = ('containerImage');
+
+        const divIconeSupp = document.createElement("div");
+        divIconeSupp.className = ('divIconeSuppression');
+    
+        const backgroundDelete = document.createElement("span");
+        backgroundDelete.className = ('backgroundBlack');
+    
+        const iconDelete = document.createElement("i");
+        iconDelete.classList.add("fa-solid", "fa-trash-can", "iconDelete");
+
+        containerImage.appendChild(img);
+        containerImage.appendChild(divIconeSupp);
+        divIconeSupp.appendChild(backgroundDelete);
+        divIconeSupp.appendChild(iconDelete);
+        miniaProjets.appendChild(containerImage);
     }
 }
 

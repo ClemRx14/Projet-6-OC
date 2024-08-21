@@ -312,8 +312,8 @@ a:hover, #login:hover, #modifierProjets:hover {
 	position: relative;
 }
 
-/***** Modale ******/
 
+/***** Modale ******/
 
 
 .modale {
@@ -333,10 +333,9 @@ a:hover, #login:hover, #modifierProjets:hover {
 
 .modale-wrapp {
 	width: 40%;
-	height: 75%;
+	height: 550px;
 	background-color: white;
 	position: relative;
-
 }
 
 .fermetureModale {
@@ -351,28 +350,79 @@ a:hover, #login:hover, #modifierProjets:hover {
 	font-weight: 400;
 	color: black;
 	font-size: 26px;
-	padding-top: 50px;
+	padding-top: 60px;
+}
+
+.ligneETbtn {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	margin: 0 auto;
+	margin-top: 40px;
+	width: 75%;
+}
+
+.ligneHorizontale {
+	width: 100%;
+	height: 1px;
+	background-color: gray;
+	margin-bottom: 20px;
 }
 
 .btnAdd {
-	margin-top: 30px;
+	cursor: pointer;
 }
+
+/* Gestion des miniatures */
 
 .projetsMinia {
 	display: flex;
+	flex-direction: row;
 	flex-wrap: wrap;
-	width: 93%;
-	justify-content: center;
-	padding-top: 20px;
-	margin-left: 4%;
+	width: 75%;
+	margin: 0 auto;
+	padding-top: 10px;
+	gap: 13px;
+	justify-content: flex-start;
+}
+
+.containerImage {
+	width: 70px;
+	height: 10%;
+	position: relative;
 }
 
 .projetsMinia img {
-	width: 15%;
-	height: 103px;
-	margin: 5px;
-	margin-top: 20px;
+	margin-top: 10px;
+	height: 90px;
+	width: 100%;
 }
+
+.divIconeSuppression {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px; 
+    right: 5px;
+	height: 10px;
+	width: 20px;
+	cursor: pointer;
+}
+
+.backgroundBlack {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+	border-radius: 2px;
+}
+
+.iconDelete {
+    color: white;
+	position: absolute;
+}
+
+
 
 
 
