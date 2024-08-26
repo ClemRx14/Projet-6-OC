@@ -14,8 +14,9 @@ async function displayWorks(){
         const figure = document.createElement("figure");
         const img = document.createElement("img");
         const figCaption = document.createElement("figcaption");
-        const gallery = document.getElementById("gallery")
+        const gallery = document.getElementById("gallery");
 
+        figure.dataset.workId = work.id;
         img.src = work.imageUrl;
         img.alt = work.title;
         figCaption.innerText = work.title;
@@ -148,13 +149,12 @@ window.onclick = function(event) {
     }
   }
 
-// Affichage des projets en miniatures 
+// Affichage des projets en miniatures + possibilité de supprimer un projet
 
 async function displayMinia() {
     const works = await fetchWorks();
     let miniaProjets = document.querySelector(".projetsMinia");
     miniaProjets.innerHTML = '';
-    console.log(works);
 
     for (const work of works){
         const img = document.createElement("img");
@@ -162,6 +162,7 @@ async function displayMinia() {
         
         const containerImage = document.createElement("div");
         containerImage.className = ('containerImage');
+        containerImage.dataset.workId = work.id;
 
         const divIconeSupp = document.createElement("div");
         divIconeSupp.className = ('divIconeSuppression');
@@ -177,8 +178,36 @@ async function displayMinia() {
         divIconeSupp.appendChild(backgroundDelete);
         divIconeSupp.appendChild(iconDelete);
         miniaProjets.appendChild(containerImage);
+
+        // Appel de la fonction Suppression des projets 
+
+        iconDelete.addEventListener("click", async () => {
+            await supprimerProjet(work.id);
+        });
     }
 }
+
+async function supprimerProjet(workId) {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: 'DELETE', 
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    const isResponseOk = response.ok;
+    if (isResponseOk){
+        await displayWorks();
+        await displayMinia();
+    }else{
+        console.log('Erreur lors de la suppression du projet.');
+    }
+
+}
+
+
 
 
 
