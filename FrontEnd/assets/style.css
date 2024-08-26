@@ -196,7 +196,7 @@ footer nav ul {
 	margin-bottom: 30px;
 }
 
-.boutonLogin, button {
+.boutonLogin, button, .ajouterFichier {
 	color: #1D6154;
 	background-color: white;
 	border-radius: 60px;
@@ -211,7 +211,7 @@ footer nav ul {
 }
 
 
-.boutonLogin:hover, button:hover {
+.boutonLogin:hover, button:hover, .ajouterFichier:hover {
 	color: white;
 	background-color: #1D6154;
 }
@@ -446,17 +446,64 @@ a:hover, #login:hover, #modifierProjets:hover {
 /* Deuxieme partie Modale */
 
 .deuxiemeModale {
-	display: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
-
+/* Ne pas oublier de mettre dislay none à la fin */
 }
 
-.deuxiemeModale i {
+#retourPremiereModale {
 	position: absolute;
 	top: 30px;
 	left: 30px;
 	cursor: pointer;
 }
+
+.formulaireAjout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 75%;
+	margin-top: 20px;
+}
+
+.backgroundLogoAjout {
+	background-color: #E8F1F6;
+	width: 95%;
+	height: 170px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.logoImage {
+	font-size: 70px;
+	margin-top: 20px;
+	color: #B9C5CC;
+}
+
+.ajouterFichier {
+	width: 40%;
+	height: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.inputImage {
+	width: 100%;
+	opacity: 0;
+}
+
+.ajouterImage {
+	margin-top: -17px ;
+	font-size: 14px;
+}
+
+
+
 
 
 
