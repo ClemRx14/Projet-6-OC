@@ -293,6 +293,27 @@ a:hover, #login:hover, #modifierProjets:hover {
 	bottom: 220px;
 }
 
+/* Barre edition quand utilisateur connecté  */
+
+.barreEdition {
+	background-color: black;
+	color: white;
+	font-size: 16px;
+	font-weight: 400;
+	position: absolute;
+	height: 40px;
+	left: 0;
+	right: 0;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+.barreEdition span {
+	margin-left: 10px;
+}
+
 /* Modale affichage ********/
 
 .boutonLogoAdd {

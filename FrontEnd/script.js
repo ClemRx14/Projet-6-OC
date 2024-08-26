@@ -116,6 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('token');
             location.reload();
         });
+        
+        // Ajout de la barre edition quand utilisateur connecté
+
+        const barreEdition = document.querySelector(".barreEdition");
+        barreEdition.style.display = 'flex';
     }
     else {
         const btnModifier = document.querySelector(".boutonLogoAdd");
