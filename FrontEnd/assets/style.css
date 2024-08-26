@@ -443,6 +443,22 @@ a:hover, #login:hover, #modifierProjets:hover {
 	position: absolute;
 }
 
+/* Deuxieme partie Modale */
+
+.deuxiemeModale {
+	display: none;
+
+
+}
+
+.deuxiemeModale i {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	cursor: pointer;
+}
+
+
 
 
 

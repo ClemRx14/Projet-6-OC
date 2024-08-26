@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('token');
             location.reload();
         });
-        
+
         // Ajout de la barre edition quand utilisateur connecté
 
         const barreEdition = document.querySelector(".barreEdition");
@@ -209,8 +209,28 @@ async function supprimerProjet(workId) {
     }else{
         console.log('Erreur lors de la suppression du projet.');
     }
-
 }
+
+// Modale partie 2 ajout photo 
+
+// Modification et passage à la deuxieme modale 
+
+const ajouterPhoto = document.querySelector(".btnAdd");
+const premiereModale = document.querySelector(".premiereModale");
+const deuxiemeModale = document.querySelector(".deuxiemeModale");
+
+ajouterPhoto.addEventListener("click", () => {
+    premiereModale.style.display = "none";
+    deuxiemeModale.style.display = "flex";
+});
+
+const retour1Modale = document.getElementById("retourPremiereModale");
+
+retour1Modale.addEventListener("click", () => {
+    deuxiemeModale.style.display = "none";
+    premiereModale.style.display = "block";
+});
+
 
 
 
