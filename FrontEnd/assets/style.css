@@ -490,11 +490,16 @@ a:hover, #login:hover, #modifierProjets:hover {
 	height: 20px;
 	display: flex;
 	flex-direction: column;
+	cursor: pointer;
+
+	/* Voir si je laisse le cursor pointer? car je n'arrive pas à le mettre aussi sur l'input ce qui créer une incohérence */
 }
 
 .inputImage {
 	width: 100%;
 	opacity: 0;
+
+	/* Cursor pointer? */
 }
 
 .ajouterImage {
@@ -502,6 +507,44 @@ a:hover, #login:hover, #modifierProjets:hover {
 	font-size: 14px;
 }
 
+.ajoutNewProjet {
+	width: 95%;
+	display: flex;
+	flex-direction: column;
+}
+
+.ajoutNewProjet label {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	color: #3D3D3D;
+	font-size: 14px;
+	font-weight: 800;
+}
+
+.ajoutNewProjet input, select {
+	height: 30px;
+	border: none;
+	outline: none;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+select {
+	height: 35px;
+}
+
+.btnValiderNewProjet {
+	cursor: pointer;
+	width: 65%;
+}
+
+.ligneETajout {
+	margin: 0 auto;
+	margin-top: 40px;
+	width: 100%;
+
+}
 
 
 
