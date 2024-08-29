@@ -528,6 +528,10 @@ a:hover, #login:hover, #modifierProjets:hover {
 	border: none;
 	outline: none;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+	padding-left: 10px;
+	color: #3D3D3D;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 select {

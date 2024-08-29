@@ -139,6 +139,7 @@ const displayModale = document.getElementById("modale");
 btnModifier.addEventListener("click", async () => {
     displayModale.style.display = 'flex';
     await displayMinia();
+    await displayCategoryBis();
 });
 
 const fermerModale = document.querySelector(".fermetureModale");
@@ -236,10 +237,10 @@ retour1Modale.addEventListener("click", () => {
 
 function previewImage () {
     const imgDownload = document.getElementById("inputImage");
-    const imageChoisie = inputImage.files[0];
+    const imageChoisie = imgDownload.files[0];
     const imagePreview = document.querySelector(".backgroundLogoAjout");
 
-    if(imageChoisie.type.match('image.*')) {
+    if(imageChoisie.type.match("image.*")) {
         const reader = new FileReader();
 
         reader.addEventListener("load", function (event) {
@@ -248,13 +249,27 @@ function previewImage () {
             image.width = 129;
             image.height = 193;
             image.src = imageUrl;
-            image.addEventListener('load', function() {
+            image.addEventListener("load", function() {
                 imagePreview.innerHTML = '';
                 imagePreview.appendChild(image);
               });
-              
+
         });
         reader.readAsDataURL(imageChoisie);
+    }
+}
+
+// Afficher les catégories dans la balise select
+
+async function displayCategoryBis () {
+    const categories = await fetchCategory();
+    const select = document.getElementById("categorieNewProjet");
+
+    for(const category of categories){
+        const choix = document.createElement("option");
+        choix.value = category.id;
+        choix.textContent = category.name;
+        select.appendChild(choix);
     }
 }
 
