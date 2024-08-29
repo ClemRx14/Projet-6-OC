@@ -232,6 +232,32 @@ retour1Modale.addEventListener("click", () => {
 });
 
 
+// Preview des images pour les nouveaux projets à ajouter **
+
+function previewImage () {
+    const imgDownload = document.getElementById("inputImage");
+    const imageChoisie = inputImage.files[0];
+    const imagePreview = document.querySelector(".backgroundLogoAjout");
+
+    if(imageChoisie.type.match('image.*')) {
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function (event) {
+            const imageUrl = event.target.result;
+            const image = new Image();
+            image.width = 129;
+            image.height = 193;
+            image.src = imageUrl;
+            image.addEventListener('load', function() {
+                imagePreview.innerHTML = '';
+                imagePreview.appendChild(image);
+              });
+              
+        });
+        reader.readAsDataURL(imageChoisie);
+    }
+}
+
 
 
 
