@@ -275,40 +275,37 @@ async function displayCategoryBis () {
 
 // Verification du formulaire avant envoie des nouveaux projets***
 
-let formulaireEnvoie = document.getElementById("formulaireAjout");
+const formulaireEnvoie = document.getElementById("formulaireAjout");
+const nouveauProjet = document.getElementById("inputImage");
+const titreProjet = document.getElementById("titreNewProjet");
+const categorieProjet = document.getElementById("categorieNewProjet");
+const erreurFormulaire = document.getElementById("ErreurFormulaireEnvoie");
 
 formulaireEnvoie.addEventListener("submit", async function(event) {
-
-    let nouveauProjet = document.getElementById("inputImage");
-    let titreProjet = document.getElementById("titreNewProjet");
-    let categorieProjet = document.getElementById("categorieNewProjet");
-    const erreurFormulaire = document.getElementById("ErreurFormulaireEnvoie");
-
     erreurFormulaire.innerHTML = "";
+    event.preventDefault();
 
     // Verifier si les champs sont vides
 
-    if (!nouveauProjet.value || !titreProjet.value || !categorieProjet.value) {
-        event.preventDefault();
+    if (!nouveauProjet.files.length|| !titreProjet.value || !categorieProjet.value) {
         erreurFormulaire.innerHTML = "Veuillez remplir tous les champs : Image,Titre et Catégorie";
+        return;
     }
 
     const formatImage = /(\.jpg|\.png)$/i;
+    let fichierUploade = nouveauProjet.files[0];
 
-    if (nouveauProjet.files.length > 0) {
-        let fichierUploade = nouveauProjet.files[0];
-
-        if (!formatImage.test(fichierUploade.name)) {
-            event.preventDefault();
-            erreurFormulaire.innerHTML = "Veuillez choisir le bon format d'image";
-        }
-
-        let tailleMaximalFichier = 4 * 1024 * 1024;
-        if (fichierUploade.size > tailleMaximalFichier) {
-            event.preventDefault();
-            erreurFormulaire.innerHTML = "Veuillez choisir une image ne dépassant pas les 4mo";
-        }
+    if (!formatImage.test(fichierUploade.name)) {
+        erreurFormulaire.innerHTML = "Veuillez choisir le bon format d'image";
+        return;
     }
+
+    let tailleMaximalFichier = 4 * 1024 * 1024;
+    if (fichierUploade.size > tailleMaximalFichier) {
+        erreurFormulaire.innerHTML = "Veuillez choisir une image ne dépassant pas les 4mo";
+        return;
+    }
+
 
 // Envoie du formulaire apres les verifications :
 
@@ -316,11 +313,15 @@ formulaireEnvoie.addEventListener("submit", async function(event) {
     formData.append("image", fichierUploade);
     formData.append("title", titreProjet.value);
     formData.append("category", categorieProjet.value);
+    const token = localStorage.getItem('token');
 
     try {
         const response = await fetch("http://localhost:5678/api/works", {
             method: "POST",
-            body: formData
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
         if (response.ok) {
             let nouveauProjetAjout = await response.json();
@@ -377,7 +378,6 @@ function affichageNouveauProjet(projet) {
     divIconeSupp.appendChild(backgroundDelete);
     divIconeSupp.appendChild(iconDelete);
     miniatures.appendChild(containerImage);
-
 }
 
 

@@ -54,8 +54,6 @@ function envoieLogs() {
             errorEmail.innerText = "";
         }
 
-     console.log("Valeurs envoyées : ", logs);
-
      const chargeUtile = JSON.stringify(logs);
 
      const response = await fetch("http://localhost:5678/api/users/login", {

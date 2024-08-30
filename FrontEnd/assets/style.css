@@ -490,15 +490,11 @@ a:hover, #login:hover, #modifierProjets:hover {
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
-
-	/* Voir si je laisse le cursor pointer? car je n'arrive pas à le mettre aussi sur l'input ce qui créer une incohérence */
 }
 
 .inputImage {
 	width: 100%;
 	opacity: 0;
-
-	/* Cursor pointer? */
 }
 
 .ajouterImage {
