@@ -6,17 +6,13 @@ loginConnexion.addEventListener("click", function() {
     window.location.href = 'login.html';
 });
 
-
 // Retour à la page index.html contenant les projets 
-
 
 const retourIndex = document.getElementById('retourProjets');
 
 retourIndex.addEventListener("click", function() {
     window.location.href = 'index.html';
 });
-
-
 
 // Envoie du formulaire de connexion à l'API
 
@@ -58,11 +54,7 @@ function envoieLogs() {
             errorEmail.innerText = "";
         }
 
-
-     console.log("Valeurs envoyées : ", logs);
-
      const chargeUtile = JSON.stringify(logs);
-
 
      const response = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",

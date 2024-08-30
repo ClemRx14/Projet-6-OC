@@ -15,6 +15,10 @@
 	<script src="script.js" defer></script>
 </head>
 <body>
+	<div class="barreEdition">
+		<i class="fa-solid fa-pen-to-square"></i>
+		<span>Mode edition</span>
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -31,6 +35,47 @@
 	</nav>
 </header>
 <main>
+	<aside id="modale" class="modale">
+		<div class="modale-wrapp">
+			<i class="fa-solid fa-xmark fermetureModale"></i>
+			<div class="premiereModale">
+			    <h2 class="titleModal">Galerie photo</h2>
+			    <div class="projetsMinia">
+			    </div>
+			    <div class="ligneETbtn">
+				    <div class="ligneHorizontale"></div>
+			        <button class="btnAdd">Ajouter une photo</button>
+			    </div>
+			</div>
+			<div class="deuxiemeModale">
+				<i class="fa-solid fa-arrow-left" id="retourPremiereModale"></i>
+				<span class="titleModal">Ajout Photo</span>
+
+				<form class="formulaireAjout" id="formulaireAjout">
+					<span class="backgroundLogoAjout">
+						<i class="fa-regular fa-image logoImage"></i>
+						<label class="ajouterFichier" for="inputImage">
+							<input type="file" id="inputImage" class="inputImage" onchange="previewImage()">
+							<span class="ajouterImage">+ Ajouter Photo</span>
+						</label>
+						<span>jpg, png : 4mo max</span>
+					</span>
+					<div class="ajoutNewProjet">
+						<label for="titreNewProjet">Titre</label>
+						<input type="text" id="titreNewProjet">
+	
+						<label for="categorieNewProjet">Catégorie</label>
+						<select id="categorieNewProjet"></select>
+						<div class="ligneETajout">
+							<div class="ligneHorizontale"></div>
+							<button class="btnValiderNewProjet" type="submit">Valider</button>
+						</div>
+					</div>
+					<div id="ErreurFormulaireEnvoie"></div>
+				</form>
+			</div>
+		</div>
+	</aside>
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
@@ -46,8 +91,8 @@
 	<section id="portfolio">
 			<div class="boutonLogoAdd">
 				<a href="#modale">
-				 <i class="fa-solid fa-pen-to-square"></i>
-				 <span id="modifierProjets">Modifier</span>
+				     <i class="fa-solid fa-pen-to-square"></i>
+				     <span id="modifierProjets">Modifier</span>
 				</a>
 			</div>
 			<h2 id="filtresProjets">Mes Projets</h2>
