@@ -277,7 +277,7 @@ async function displayCategoryBis () {
 
 let formulaireEnvoie = document.getElementById("formulaireAjout");
 
-formulaireEnvoie.addEventListener("submit", function(event) {
+formulaireEnvoie.addEventListener("submit", async function(event) {
 
     let nouveauProjet = document.getElementById("inputImage");
     let titreProjet = document.getElementById("titreNewProjet");
@@ -309,7 +309,76 @@ formulaireEnvoie.addEventListener("submit", function(event) {
             erreurFormulaire.innerHTML = "Veuillez choisir une image ne dépassant pas les 4mo";
         }
     }
+
+// Envoie du formulaire apres les verifications :
+
+    let formData = new FormData();
+    formData.append("image", fichierUploade);
+    formData.append("title", titreProjet.value);
+    formData.append("category", categorieProjet.value);
+
+    try {
+        const response = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            body: formData
+        });
+        if (response.ok) {
+            let nouveauProjetAjout = await response.json();
+            affichageNouveauProjet(nouveauProjetAjout);
+    
+        } else {
+            erreurFormulaire.innerHTML = "Erreur lors de l'upload du projet";
+        }
+    }
+    catch (error) {
+        erreurFormulaire.innerHTML = "Une erreur est survenue";
+    }
 });
+
+
+function affichageNouveauProjet(projet) {
+
+    // Ajout à la galerie
+
+    const galerie = document.getElementById("gallery");
+    const miniatures = document.querySelector(".projetsMinia");
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const figCaption = document.createElement("figcaption");
+
+    img.src = projet.imageUrl;
+    img.alt = projet.title;
+    figCaption.innerText = projet.title;
+
+    figure.appendChild(img);
+    figure.appendChild(figCaption);
+    galerie.appendChild(figure);
+
+    // Ajout aux miniatures
+
+    const containerImage = document.createElement("div");
+    containerImage.className = 'containerImage';
+    containerImage.dataset.workId = projet.id;
+
+    const miniaImg = document.createElement("img");
+    miniaImg.src = projet.imageUrl;
+
+    const divIconeSupp = document.createElement("div");
+    divIconeSupp.className = 'divIconeSuppression';
+
+    const backgroundDelete = document.createElement("span");
+    backgroundDelete.className = 'backgroundBlack';
+
+    const iconDelete = document.createElement("i");
+    iconDelete.classList.add("fa-solid", "fa-trash-can", "iconDelete");
+
+    containerImage.appendChild(miniaImg);
+    containerImage.appendChild(divIconeSupp);
+    divIconeSupp.appendChild(backgroundDelete);
+    divIconeSupp.appendChild(iconDelete);
+    miniatures.appendChild(containerImage);
+
+}
 
 
 

@@ -450,8 +450,7 @@ a:hover, #login:hover, #modifierProjets:hover {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
-/* Ne pas oublier de mettre dislay none à la fin */
+	display: none;
 }
 
 #retourPremiereModale {
