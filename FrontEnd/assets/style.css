@@ -550,6 +550,16 @@ select {
 
 }
 
+/* Formulaire envoie des nouveaux fichiers*/
+
+#ErreurFormulaireEnvoie {
+	display: flex;
+	color: red;
+	font-weight: 800;
+	position: absolute;
+	bottom: 90px;
+}
+
 
 
 

@@ -273,6 +273,44 @@ async function displayCategoryBis () {
     }
 }
 
+// Verification du formulaire avant envoie des nouveaux projets***
+
+let formulaireEnvoie = document.getElementById("formulaireAjout");
+
+formulaireEnvoie.addEventListener("submit", function(event) {
+
+    let nouveauProjet = document.getElementById("inputImage");
+    let titreProjet = document.getElementById("titreNewProjet");
+    let categorieProjet = document.getElementById("categorieNewProjet");
+    const erreurFormulaire = document.getElementById("ErreurFormulaireEnvoie");
+
+    erreurFormulaire.innerHTML = "";
+
+    // Verifier si les champs sont vides
+
+    if (!nouveauProjet.value || !titreProjet.value || !categorieProjet.value) {
+        event.preventDefault();
+        erreurFormulaire.innerHTML = "Veuillez remplir tous les champs : Image,Titre et Catégorie";
+    }
+
+    const formatImage = /(\.jpg|\.png)$/i;
+
+    if (nouveauProjet.files.length > 0) {
+        let fichierUploade = nouveauProjet.files[0];
+
+        if (!formatImage.test(fichierUploade.name)) {
+            event.preventDefault();
+            erreurFormulaire.innerHTML = "Veuillez choisir le bon format d'image";
+        }
+
+        let tailleMaximalFichier = 4 * 1024 * 1024;
+        if (fichierUploade.size > tailleMaximalFichier) {
+            event.preventDefault();
+            erreurFormulaire.innerHTML = "Veuillez choisir une image ne dépassant pas les 4mo";
+        }
+    }
+});
+
 
 
 
