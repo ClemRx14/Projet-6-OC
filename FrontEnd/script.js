@@ -126,9 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnModifier = document.querySelector(".boutonLogoAdd");
         btnModifier.style.display = 'none';
     }
-
-    console.log(token);
-   
 });
 
 
@@ -207,8 +204,6 @@ async function supprimerProjet(workId) {
     if (isResponseOk){
         await displayWorks();
         await displayMinia();
-    }else{
-        console.log('Erreur lors de la suppression du projet.');
     }
 }
 
@@ -235,8 +230,8 @@ retour1Modale.addEventListener("click", () => {
 
 // Preview des images pour les nouveaux projets à ajouter **
 
-function previewImage () {
-    const imgDownload = document.getElementById("inputImage");
+const imgDownload = document.getElementById("inputImage");
+imgDownload.addEventListener("change", () => {
     const imageChoisie = imgDownload.files[0];
     const imagePreview = document.querySelector(".backgroundLogoAjout");
 
@@ -252,12 +247,12 @@ function previewImage () {
             image.addEventListener("load", function() {
                 imagePreview.innerHTML = '';
                 imagePreview.appendChild(image);
-              });
+            });
 
         });
         reader.readAsDataURL(imageChoisie);
     }
-}
+});
 
 // Afficher les catégories dans la balise select
 
