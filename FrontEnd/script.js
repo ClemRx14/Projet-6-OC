@@ -101,6 +101,13 @@ async function filtrerCategory(categoryId){
     }
 }
 
+
+
+// *** Partie qui reprend après le login de l'administrateur.
+
+
+
+
 // *** Verification de la présence du Token dans le LocalStorage de l'utilisateur
 // et modification de la page index selon la présence du token ou non
 
@@ -202,8 +209,8 @@ async function supprimerProjet(workId) {
 
     const isResponseOk = response.ok;
     if (isResponseOk){
-        await displayWorks();
-        await displayMinia();
+        document.querySelector(`[data-work-id="${workId}"]`).remove();
+
     }
 }
 
@@ -373,6 +380,10 @@ function affichageNouveauProjet(projet) {
     divIconeSupp.appendChild(backgroundDelete);
     divIconeSupp.appendChild(iconDelete);
     miniatures.appendChild(containerImage);
+
+    iconDelete.addEventListener("click", async () => {
+        await supprimerProjet(projet.id);
+    });
 }
 
 
